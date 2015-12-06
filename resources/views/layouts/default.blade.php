@@ -9,12 +9,12 @@ this contains the links to the stylesheets used in all the page
 	@yield('title')
 
 	{{-- the file is in: assets/css/skeleton.css --}}
-	<link rel="stylesheet" href="{{ asset('assets/css/skeleton.css') }}">
+	<link rel="stylesheet" href="{{ secure_asset('assets/css/skeleton.css') }}">
 
 	@yield('sweetalert_style')
 	
 	{{-- the file is in assets/css/style.css --}}
-	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+	<link rel="stylesheet" href="{{ secure_asset('assets/css/style.css') }}">
 
 	@yield('jquery_script')
 	@yield('sweetalert_script')

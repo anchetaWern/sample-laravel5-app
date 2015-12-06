@@ -6,19 +6,19 @@
 
 
 @section('jquery_script')
-<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ secure_asset('assets/js/jquery.min.js') }}"></script>
 @stop
 
 @section('sweetalert_style')
-<link rel="stylesheet" href="{{ asset('assets/css/sweetalert.min.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('assets/css/sweetalert.min.css') }}">
 @stop
 
 @section('sweetalert_script')
-<script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
+<script src="{{ secure_asset('assets/js/sweetalert.min.js') }}"></script>
 @stop
 
 @section('users_script')
-<script src="{{ asset('assets/js/users.js') }}"></script>
+<script src="{{ secure_asset('assets/js/users.js') }}"></script>
 @stop
 
 @section('content')
