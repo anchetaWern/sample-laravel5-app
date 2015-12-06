@@ -1,0 +1,38 @@
+/*
+the main css file of the app
+this can be linked inside a view by calling any of the following methods from the view:
+	
+	url() - generates an http url 
+	asset() - same as url, but if the current scheme of the request is https, it generates an https URL
+	secure_asset() - generates an https url to an asset
+
+so if you have the following path to a stylesheet: assets/css/style.css
+
+you can refer to it from the view using the following code:
+
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+more info here: http://laravel.com/docs/5.1/helpers#urls
+*/
+#wrapper {
+	width: 900px;
+	margin: 0 auto;
+}
+
+.alert {
+    padding: 20px;
+    border: 1px solid #EFEFEF;
+	margin-bottom: 20px;
+}
+
+.alert-danger, .button-danger {
+    background-color: #FF6969;
+}
+
+.alert-success {
+	background-color: #6CBE61;
+}
+
+.sweet-alert button {
+	padding: 0 20px;
+}

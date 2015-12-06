@@ -10,6 +10,8 @@ use Illuminate\Routing\Controller as BaseController; //always include this befor
 
 use Illuminate\Http\Request; //always include this when you need to work with form inputs
 
+use Auth;
+
 /*
 defining the controller class.
 this should always be the same as the filename.
@@ -52,17 +54,27 @@ class HomeController extends BaseController {
 		$password = $request->input('password');
 
 		/*
-		todo:
-		add code for logging user and creating sessions here
+		attempt to log the user in with the email and password
+		the attempt() method returns true if the email and password is correct.
+		it also automatically creates a session for the user.
 		*/
+		if(Auth::attempt(['email' => $email, 'password' => $password])){
 
-		return redirect('admin'); 
+			return redirect('admin'); //redirect to the admin route
+		}
+
 		/*
-		redirect to the admin page
-		you should define a route for the admin page in the app/Http/routes.php file for this to work:
+		redirect to the home page with a custom message which contains an error. 
+		This custom message is what's being checked for in the app/views/partials/alert.blade.php
 
-		Route::get('/admin', 'AdminController@index');
+		@if(session('message'))
+			<div class="alert alert-{{ session('message.type') }}">
+				{{ session('message.text') }}
+			</div>
+		@endif
 		*/
+		return redirect('/')->with('message', ['type' => 'danger', 'text' => 'Incorrect credentials']);
+
 	}
 
 }

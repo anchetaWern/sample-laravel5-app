@@ -43,4 +43,37 @@ of the controller should be HomeController. See app/Http/Controllers/HomeControl
 */
 Route::post('/login', 'HomeController@login');
 
-Route::get('/admin', 'AdminController@index');
+
+/*
+Route groups allows you to group a set of related routes. 
+In the example below, a set of routes that respond to requests for admin pages is grouped together 
+by wrapping them inside Route::group. The group method accepts 2 parameters:
+	- an array containing the settings for this route group.
+	- the callback function which contains the related routes.
+
+The option that was passed in here is a middleware called user.is_loggedin
+You can find this middleware at: app/Http/Middleware/CheckLogin.php
+And it is registered at: app/Http/Kernel.php
+*/
+Route::group(['middleware' => 'user.is_loggedin'], function () {
+	
+	//each of the routes below are using the AdminController located at: app/Http/Controllers/AdminController.php
+
+	Route::get('/admin', 'AdminController@index');
+ 
+	Route::get('/user/create', 'AdminController@createUser');
+
+	Route::post('/user/create', 'AdminController@doCreateUser');
+
+	Route::get('/users', 'AdminController@users');
+
+	Route::get('/user/{id}', 'AdminController@user');
+
+	Route::post('/user/update', 'AdminController@updateUser');
+
+	Route::post('/user/delete', 'AdminController@deleteUser');
+
+	Route::get('/logout', 'AdminController@logout');
+});
+
+//more information about routing here: http://laravel.com/docs/5.1/routing

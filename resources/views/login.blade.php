@@ -14,7 +14,7 @@ and 'default' as the name of the file
 so the actual path is resources/views/layouts/default.blade.php
 --}}
 <form method="POST" action="/login">
-
+  @include('partials.alert')
   {{-- always include this in all your forms to prevent cross-site request forgery --}}
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   

@@ -7,8 +7,18 @@ this contains the links to the stylesheets used in all the page
 <head>
 	<meta charset="UTF-8">
 	@yield('title')
+
+	{{-- the file is in: assets/css/skeleton.css --}}
 	<link rel="stylesheet" href="{{ url('assets/css/skeleton.css') }}">
+
+	@yield('sweetalert_style')
+	
+	{{-- the file is in assets/css/style.css --}}
 	<link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
+
+	@yield('jquery_script')
+	@yield('sweetalert_script')
+	@yield('users_script')
 </head>
 <body>
 	<div id="wrapper">
